@@ -73,7 +73,8 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gray-50">
       {/* Add CSS for the animation */}
-      <style jsx>{`
+      <style>
+        {`
         .logo-slice {
           position: absolute;
           width: 100%;
@@ -95,7 +96,8 @@ const Hero = () => {
         .hero-gradient {
           background: linear-gradient(135deg, rgba(249, 249, 249, 1) 0%, rgba(240, 240, 240, 1) 100%);
         }
-      `}</style>
+        `}
+      </style>
       
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
