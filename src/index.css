@@ -117,3 +117,40 @@
 .section-padding {
   @apply py-16 md:py-24;
 }
+
+/* Logo animation styles */
+@keyframes slice-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.logo-slice {
+  animation: slice-in 0.5s forwards;
+  animation-play-state: paused;
+}
+
+.animate-slice {
+  animation-play-state: running;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
