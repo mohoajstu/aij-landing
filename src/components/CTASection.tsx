@@ -25,7 +25,7 @@ const CTASection = () => {
             <Button className="bg-white text-aij-blue hover:bg-gray-100 text-lg px-8 py-6">
               Schedule a Consultation
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
+            <Button variant="outline" className="bg-white text-aij-blue hover:bg-gray-100 text-lg px-8 py-6">
               Explore Solutions
             </Button>
           </div>
