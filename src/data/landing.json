@@ -1,0 +1,98 @@
+{
+    "solutions": {
+      "title": "Apply AI Right",
+      "subtitle": "Transform Your Business with Strategic AI Implementation",
+      "description": "Your business will see the most benefit from AI technologies—from generative AI to natural language processing and machine learning algorithms—when applied to the right use cases. Build competitive advantage across departments and industries.",
+      "solutions": [
+        {
+          "icon": "message-circle",
+          "title": "AI for Customer Service",
+          "description": "Unlock efficiency and supercharge your customer service agents with AI. Improve response times, personalize interactions, and reduce resolution time.",
+          "cta": "Explore AI for Customer Service",
+          "image": "/lovable-uploads/Aij-customer-service-icon.png"
+        },
+        {
+          "icon": "layers",
+          "title": "AI for Application Modernization",
+          "description": "Modernize existing apps with the power of AI and hybrid cloud. Enhance functionality, improve user experience, and future-proof your technology stack.",
+          "cta": "Explore our AI for App Mod Services",
+          "image": "/lovable-uploads/AIJ-modern-apps.png"
+        },
+        {
+          "icon": "users",
+          "title": "AI for Human Resources",
+          "description": "Reimagine HR with AI at the core to deliver better business outcomes. Streamline recruiting, enhance employee experience, and optimize talent management.",
+          "cta": "Explore our AI for HR Services",
+          "image": "/lovable-uploads/Aij-HR.png"
+        },
+        {
+          "icon": "target",
+          "title": "AI for Marketing",
+          "description": "Create more personalized customer experiences at scale with intelligent marketing solutions. Optimize campaigns, analyze customer behavior, and drive engagement.",
+          "cta": "Learn More About AI for Marketing",
+          "image": "/lovable-uploads/AIj-marketing.png"
+        },
+        {
+          "icon": "bar-chart",
+          "title": "AI for Finance",
+          "description": "Unlock financial performance and business value with data, AI and automation. Enhance forecasting, detect fraud, and streamline financial operations.",
+          "cta": "Explore our AI for Finance Services",
+          "image": "/lovable-uploads/Aij-finance.png"
+        }
+      ]
+    },
+    "caseStudies": {
+      "title": "Real-World Impact",
+      "subtitle": "Success Stories from Our Clients",
+      "description": "See how our AI solutions have transformed operations and driven growth for organizations across industries.",
+      "cases": [
+        {
+          "image": "/lovable-uploads/case-study-1.jpg",
+          "title": "Healthcare Provider Optimization",
+          "description": "A leading healthcare network improved patient scheduling and resource allocation, reducing wait times by 35% and optimizing staff arrangements and manage capacity more effectively."
+        },
+        {
+          "image": "/lovable-uploads/case-study-2.jpg",
+          "title": "Retail Inventory Management",
+          "description": "A global retail chain implemented our predictive analytics solution to optimize inventory levels across 500+ locations, reducing stockouts by 42% while decreasing excess inventory based on actual usage patterns."
+        }
+      ],
+      "ctaText": "View All Case Studies"
+    },
+    "industries": {
+      "title": "AI Applications Across Industries",
+      "subtitle": "Our AI solutions can be tailored to address specific challenges across various business areas and industries.",
+      "sectors": [
+        {
+          "icon": "message-dots",
+          "title": "Customer Service",
+          "description": "AI-powered chatbots and virtual assistants that improve response times and customer experience."
+        },
+        {
+          "icon": "arrows-repeat",
+          "title": "Application Modernization",
+          "description": "Update legacy systems with AI capabilities to enhance functionality and user experience."
+        },
+        {
+          "icon": "users",
+          "title": "Human Resources",
+          "description": "Streamline recruitment, onboarding, and talent management with intelligent automation."
+        },
+        {
+          "icon": "chart-pie",
+          "title": "Financial Services",
+          "description": "Risk assessment, fraud detection, and automated compliance monitoring for financial institutions."
+        },
+        {
+          "icon": "truck",
+          "title": "Supply Chain",
+          "description": "Optimize inventory, logistics, and demand forecasting with predictive analytics."
+        },
+        {
+          "icon": "building",
+          "title": "Manufacturing",
+          "description": "Improve quality control, maintenance scheduling, and production efficiency."
+        }
+      ]
+    }
+  }

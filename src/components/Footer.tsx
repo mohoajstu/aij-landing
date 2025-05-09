@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -44,9 +43,6 @@ const Footer = () => {
                 <Link to="/solutions" className="text-gray-400 hover:text-white transition-colors">AI Solutions</Link>
               </li>
               <li>
-                <Link to="/case-studies" className="text-gray-400 hover:text-white transition-colors">Case Studies</Link>
-              </li>
-              <li>
                 <Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link>
               </li>
               <li>
@@ -82,13 +78,12 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="mailto:info@aijsolutions.com" className="hover:text-white transition-colors">info@aijsolutions.com</a>
+                <a href="mailto:aijsolutions.co@gmail.com" className="hover:text-white transition-colors">info@aijsolutions.com</a>
               </li>
               <li>
-                <a href="tel:+11234567890" className="hover:text-white transition-colors">+1 (123) 456-7890</a>
+                <a href="tel:+1 604 339 2925" className="hover:text-white transition-colors">+1 (123) 456-7890</a>
               </li>
-              <li>123 AI Boulevard</li>
-              <li>Tech City, TC 12345</li>
+              <li>Windsor, Ontario, Canada</li>
             </ul>
           </div>
         </div>

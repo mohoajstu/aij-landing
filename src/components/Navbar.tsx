@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -29,7 +28,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2">
             <img 
-              src="/lovable-uploads/c7c0cd7b-18d1-4bb6-a310-55fd2aa1096f.png" 
+              src="/lovable-uploads/aij-logo.png" 
               alt="AiJ Solutions Logo" 
               className="h-10 md:h-12"
             />
@@ -39,7 +38,6 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <Link to="/" className="text-aij-darkgray hover:text-aij-blue transition-colors">Home</Link>
             <Link to="/solutions" className="text-aij-darkgray hover:text-aij-blue transition-colors">Solutions</Link>
-            <Link to="/case-studies" className="text-aij-darkgray hover:text-aij-blue transition-colors">Case Studies</Link>
             <Link to="/about" className="text-aij-darkgray hover:text-aij-blue transition-colors">About</Link>
             <Link to="/contact">
               <Button className="bg-aij-blue hover:bg-aij-teal text-white transition-colors ml-2">
@@ -77,13 +75,6 @@ const Navbar = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Solutions
-              </Link>
-              <Link 
-                to="/case-studies" 
-                className="text-aij-darkgray hover:text-aij-blue transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Case Studies
               </Link>
               <Link 
                 to="/about" 
