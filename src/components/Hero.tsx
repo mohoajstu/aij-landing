@@ -164,7 +164,7 @@ const Hero = () => {
   });
   
   return (
-    <section ref={heroSectionRef} className="hero-section hero-gradient">
+    <section ref={heroSectionRef} className="hero-section" style={{ background: '#ffffff' }}>
       {/* Animated background elements */}
       <div ref={animationRef} className="animation-container">
         {circles.map((circle, i) => (
