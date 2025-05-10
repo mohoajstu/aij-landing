@@ -12,7 +12,10 @@
 
 /* Transparent navbar (when at top of page and menu is closed) */
 .navbar-transparent {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
   padding: 1rem 0;
 }
 
@@ -28,11 +31,19 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  z-index: 1001;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
 }
 
 .navbar-logo img {
   height: 2.5rem;
-  transition: height 0.3s ease;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
 /* Mobile menu button */
@@ -45,6 +56,12 @@
   cursor: pointer;
   padding: 0.25rem;
   color: #005073; /* aij-blue */
+  z-index: 1001; /* Ensure it's above the dropdown */
+  transition: transform 0.2s ease;
+}
+
+.mobile-menu-button:hover {
+  transform: scale(1.1);
 }
 
 /* Desktop navigation links */
@@ -52,15 +69,58 @@
   display: none;
 }
 
+@media (min-width: 768px) {
+  .nav-link {
+    color: #333333; /* aij-darkgray for light background */
+  }
+  
+  .navbar-transparent .nav-link {
+    color: 333333; /* Light text for transparent background */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+}
+
 .nav-link {
-  color: #333333; /* aij-darkgray */
-  transition: color 0.2s ease;
+  color: #005073; /* aij-blue - ensuring good contrast on any background */
+  transition: all 0.3s ease;
   font-weight: 500;
   position: relative;
+  padding: 0.5rem 0.75rem;
 }
 
 .nav-link:hover {
-  color: #005073; /* aij-blue */
+  color: #4CB0C0; /* aij-teal */
+  transform: translateY(-2px);
+}
+
+/* Navigation link underline animation */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #4CB0C0; /* aij-teal */
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Add active link styling */
+.nav-link.active {
+  color: #4CB0C0; /* aij-teal */
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  opacity: 1;
 }
 
 /* Contact button */
@@ -71,42 +131,105 @@
   border-radius: 0.375rem;
   padding: 0.5rem 1.25rem;
   font-weight: 500;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
+  margin-left: 0.5rem;
+  overflow: hidden;
+  position: relative;
 }
 
 .contact-button:hover {
   background-color: #4CB0C0; /* aij-teal */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.5s ease-out;
+}
+
+.contact-button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Mobile menu */
 .mobile-menu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
   background-color: white;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
 }
 
 .mobile-menu.open {
-  max-height: 300px;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
+  height: 100vh;
+  padding-top: 4rem; /* Space for the navbar */
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .mobile-menu-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  transition-delay: 0.15s;
+}
+
+.mobile-menu.open .mobile-menu-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .mobile-nav-link {
   color: #333333; /* aij-darkgray */
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
+  padding: 0.75rem 0;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateX(-20px);
 }
+
+.mobile-menu.open .mobile-nav-link {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s ease;
+}
+
+.mobile-menu.open .mobile-nav-link:nth-child(1) { transition-delay: 0.2s; }
+.mobile-menu.open .mobile-nav-link:nth-child(2) { transition-delay: 0.3s; }
+.mobile-menu.open .mobile-nav-link:nth-child(3) { transition-delay: 0.4s; }
 
 .mobile-nav-link:hover {
   color: #005073; /* aij-blue */
+  transform: translateX(5px);
+  background-color: rgba(0, 80, 115, 0.05);
+  border-radius: 4px;
+  padding-left: 10px;
 }
 
 .mobile-contact-button {
@@ -118,18 +241,57 @@
   font-weight: 500;
   width: 100%;
   text-align: center;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-menu.open .mobile-contact-button {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+  transition-delay: 0.5s;
 }
 
 .mobile-contact-button:hover {
   background-color: #4CB0C0; /* aij-teal */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 80, 115, 0.2);
 }
 
-/* Animation for mobile menu */
-@keyframes fadeIn {
+.mobile-contact-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.5s ease-out;
+}
+
+.mobile-contact-button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.mobile-nav-link.active {
+  color: #005073; /* aij-blue */
+  font-weight: 600;
+  background-color: rgba(0, 80, 115, 0.05);
+  border-radius: 4px;
+  padding-left: 10px;
+}
+
+/* Page transition animations */
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -137,8 +299,62 @@
   }
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease forwards;
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease-out;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease-in;
+}
+
+/* Improve mobile menu animations for better flow */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Add subtle entrance animations for navbar elements when page loads */
+.desktop-nav .nav-link:nth-child(1) {
+  animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.desktop-nav .nav-link:nth-child(2) {
+  animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.desktop-nav .nav-link:nth-child(3) {
+  animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+.desktop-nav .contact-button {
+  animation: fadeInUp 0.5s ease-out 0.4s both;
 }
 
 /* Media queries for responsive design */
@@ -159,5 +375,17 @@
   
   .mobile-menu {
     display: none;
+  }
+  
+  /* For transparent navbar - white text */
+  .navbar-transparent .contact-button {
+    background-color: #005073;
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .navbar-transparent .contact-button:hover {
+    background-color: rgba(53, 171, 214, 0.968);
   }
 } 

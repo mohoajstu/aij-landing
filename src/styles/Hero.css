@@ -35,14 +35,14 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   padding-top: 5rem;
   padding-bottom: 2rem;
 }
 
-/* Background gradient */
+/* Background gradient - keeping for reference but making it white */
 .hero-gradient {
-  background: linear-gradient(135deg, rgba(249, 249, 249, 1) 0%, rgba(240, 240, 240, 1) 100%);
+  background: #ffffff;
 }
 
 /* Container for animated elements */
