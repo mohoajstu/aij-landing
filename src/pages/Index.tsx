@@ -24,7 +24,6 @@ const Index = () => {
       
       <CTASection />
       
-      <Newsletter />
       <Footer />
     </div>
   );

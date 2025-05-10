@@ -22,15 +22,15 @@ const ContactPage = () => {
             <div className="space-y-4 mt-8">
               <div>
                 <h3 className="font-medium text-lg">Email</h3>
-                <p>info@aijsolutions.com</p>
+                <p>aijsolutions.co@gmail.com</p>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Phone</h3>
-                <p>+1 (123) 456-7890</p>
+                <p>+1 (343)-996-1725</p>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Address</h3>
-                <p>123 AI Boulevard<br />Tech City, TC 12345</p>
+                <p>Vancouver | Toronto<br /> Canada</p>
               </div>
             </div>
           </div>

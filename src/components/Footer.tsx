@@ -5,17 +5,20 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <img 
-              src="/lovable-uploads/ba584d4b-dd9d-4ba7-be34-f70ce5e0f485.png" 
-              alt="AiJ Solutions Logo" 
-              className="h-12 mb-4"
-            />
+            <Link to="/">
+              <img 
+                src="/lovable-uploads/Asset 7-8.png" 
+                alt="AiJ Solutions Logo" 
+                className="h-12 mb-4"
+              />
+            </Link>
             <p className="text-gray-400 mb-4">
               Specializing in custom automation and AI-powered tools to streamline operations and unlock efficiency for businesses.
             </p>
+            {/* Social Media Links - Currently Disabled
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <span className="sr-only">LinkedIn</span>
@@ -30,60 +33,39 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+            */}
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
-              </li>
-              <li>
-                <Link to="/solutions" className="text-gray-400 hover:text-white transition-colors">AI Solutions</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link>
-              </li>
+              <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+              <li><Link to="/solutions" className="text-gray-400 hover:text-white transition-colors">AI Solutions</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
           
-          {/* Resources */}
+          {/* Resources
           <div>
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">AI Insights Blog</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">White Papers</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Webinars</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">AI Maturity Assessment</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Newsletter</a>
-              </li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">AI Insights Blog</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">White Papers</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Webinars</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">AI Maturity Assessment</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Newsletter</a></li>
             </ul>
           </div>
-          
+          */}
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>
-                <a href="mailto:aijsolutions.co@gmail.com" className="hover:text-white transition-colors">info@aijsolutions.com</a>
-              </li>
-              <li>
-                <a href="tel:+1 604 339 2925" className="hover:text-white transition-colors">+1 (123) 456-7890</a>
-              </li>
-              <li>Windsor, Ontario, Canada</li>
+              <li><a href="mailto:aijsolutions.co@gmail.com" className="hover:text-white transition-colors">aijsolutions.co@gmail.com</a></li>
+              <li><a href="tel:+1 (343)-996-1725" className="hover:text-white transition-colors">+1 (343)-996-1725</a></li>
+              <li>Vancouver | Toronto <br/> Canada</li>
             </ul>
           </div>
         </div>

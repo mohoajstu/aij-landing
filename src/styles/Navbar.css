@@ -1,0 +1,163 @@
+/* Navbar.css - Styles for the Navbar component with improved mobile responsiveness */
+
+/* Navbar container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Transparent navbar (when at top of page and menu is closed) */
+.navbar-transparent {
+  background-color: transparent;
+  padding: 1rem 0;
+}
+
+/* Solid navbar (when scrolled or when mobile menu is open) */
+.navbar-solid {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+}
+
+/* Logo container */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-logo img {
+  height: 2.5rem;
+  transition: height 0.3s ease;
+}
+
+/* Mobile menu button */
+.mobile-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: #005073; /* aij-blue */
+}
+
+/* Desktop navigation links */
+.desktop-nav {
+  display: none;
+}
+
+.nav-link {
+  color: #333333; /* aij-darkgray */
+  transition: color 0.2s ease;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #005073; /* aij-blue */
+}
+
+/* Contact button */
+.contact-button {
+  background-color: #005073; /* aij-blue */
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  background-color: #4CB0C0; /* aij-teal */
+}
+
+/* Mobile menu */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background-color: white;
+}
+
+.mobile-menu.open {
+  max-height: 300px;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-link {
+  color: #333333; /* aij-darkgray */
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+  color: #005073; /* aij-blue */
+}
+
+.mobile-contact-button {
+  background-color: #005073; /* aij-blue */
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-contact-button:hover {
+  background-color: #4CB0C0; /* aij-teal */
+}
+
+/* Animation for mobile menu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .navbar-logo img {
+    height: 3rem;
+  }
+  
+  .mobile-menu-button {
+    display: none;
+  }
+  
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .mobile-menu {
+    display: none;
+  }
+} 
