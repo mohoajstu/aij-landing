@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { svgLogo } from '../../public/lovable-uploads/img';
+import { svgLogo } from '../../public/imgs/img';
 import '../styles/Hero.css';
 
 const SLICE_COUNT = 100;

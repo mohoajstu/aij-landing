@@ -70,7 +70,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <Link to="/" className="navbar-logo">
             <img 
-              src="/lovable-uploads/aij-logo.png" 
+              src="/imgs/aij-logo.png" 
               alt="AiJ Solutions Logo" 
               className={isScrolled ? 'h-8 md:h-10' : 'h-10 md:h-12'}
             />

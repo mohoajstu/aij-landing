@@ -1,33 +1,23 @@
-# Welcome to your Lovable project
+# AIJ Solutions Landing Page
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/6c75fc8d-0eae-4cdc-ab36-a8299e64a489
+This is the landing page for AIJ Solutions, created by Mohammed Abdul Jabbar.
 
-## How can I edit this code?
+## How to run this code
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/6c75fc8d-0eae-4cdc-ab36-a8299e64a489) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
+There are several ways of working with this application.
 
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+To work locally using your own IDE, follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd aij-landing
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -50,7 +40,7 @@ npm run dev
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## What technologies are used for this project?
+## Technologies used
 
 This project is built with:
 
@@ -60,15 +50,14 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/6c75fc8d-0eae-4cdc-ab36-a8299e64a489) and click on Share -> Publish.
+This project can be deployed using standard static site hosting methods:
+- Vercel
+- Netlify
+- Firebase Hosting
+- GitHub Pages
 
-## Can I connect a custom domain to my Lovable project?
+## Contact
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
-Deployed via GitHub Actions
+For more information, contact Mohammed Abdul Jabbar at AIJ Solutions.

@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <Link to="/">
               <img 
-                src="/lovable-uploads/Asset 7-8.png" 
+                src="/imgs/Asset 7-8.png" 
                 alt="AiJ Solutions Logo" 
                 className="h-12 mb-4"
               />
