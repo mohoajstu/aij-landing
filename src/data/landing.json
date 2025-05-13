@@ -38,6 +38,13 @@
           "description": "Unlock financial performance and business value with data, AI and automation. Enhance forecasting, detect fraud, and streamline financial operations.",
           "cta": "Explore our AI for Finance Services",
           "image": "/imgs/Aij-finance.png"
+        },
+        {
+          "icon": "book-open",
+          "title": "AI for Education",
+          "description": "Transform learning experiences with AI-powered educational tools. Create personalized learning paths, automate administrative tasks, and enhance student engagement.",
+          "cta": "Explore our AI for Education Services",
+          "image": "/imgs/Aij-edu.png"
         }
       ]
     },
@@ -92,6 +99,11 @@
           "icon": "building",
           "title": "Manufacturing",
           "description": "Improve quality control, maintenance scheduling, and production efficiency."
+        },
+        {
+          "icon": "book-open",
+          "title": "Education",
+          "description": "Enhance learning experiences with personalized content, automated grading, and intelligent tutoring systems."
         }
       ]
     }
