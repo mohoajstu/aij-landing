@@ -1,0 +1,215 @@
+/* Solutions.css - Mobile-friendly styles for the Solutions page */
+.tabs-list-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Make tabs more mobile-friendly */
+@media (max-width: 768px) {
+  /* Adjust tab trigger sizing and spacing */
+  [data-orientation="horizontal"] > [role="tablist"] {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding: 8px;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scroll-snap-type: x mandatory;
+    position: relative;
+  }
+  
+  [data-orientation="horizontal"] > [role="tablist"]::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* Ensure tab triggers are properly sized for exactly 2 tabs visible */
+  [role="tablist"] [role="tab"] {
+    flex: 0 0 auto;
+    width: calc(50vw - 40px); /* Show exactly 2 tabs in viewport, accounting for container padding */
+    padding: 12px 8px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    scroll-snap-align: start;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Active tab styling */
+  [role="tablist"] [role="tab"][data-state="active"] {
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  /* Override the default grid layout for mobile */
+  [role="tablist"].grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+  }
+
+  /* Make tab content more readable on small screens */
+  [role="tabpanel"] .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Improve card layout on mobile */
+  [role="tabpanel"] .card {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+
+  /* Adjust card header for mobile */
+  [role="tabpanel"] .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: linear-gradient(to right, #f0f7ff, #ffffff);
+  }
+
+  /* Make logo positioning better on mobile */
+  [role="tabpanel"] .card-header img {
+    margin-top: 1rem;
+    margin-left: 0;
+    border-radius: 8px;
+    padding: 8px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Improve typography on mobile */
+  [role="tabpanel"] h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  [role="tabpanel"] h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Add some breathing room to content */
+  [role="tabpanel"] .card-content {
+    padding: 1.25rem;
+  }
+  
+  /* Better spacing for challenge/solution sections */
+  [role="tabpanel"] .grid > div {
+    padding: 1rem;
+    background: #fcfcfc;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Enhance testimonial styling */
+  [role="tabpanel"] .bg-gray-50.p-4 {
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f8fafc;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Improve tab scrolling on mobile */
+.tabs-list-container {
+  position: relative;
+  padding: 4px 0 12px;
+  margin-bottom: 8px;
+}
+
+/* Add scroll indicators */
+.tabs-list-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 60px;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.95));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Explicit scroll hint indicator */
+.scroll-hint {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #475569;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  animation: pulseHint 1.5s infinite;
+}
+
+@keyframes pulseHint {
+  0% { transform: translateY(-50%) scale(0.9); opacity: 0.7; }
+  50% { transform: translateY(-50%) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-50%) scale(0.9); opacity: 0.7; }
+}
+
+/* Fix tab trigger spacing and alignment */
+.tab-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab-trigger svg {
+  margin-right: 6px;
+  flex-shrink: 0;
+  min-width: 16px;
+}
+
+/* Enhanced card styling */
+.solution-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Improved button styling */
+.request-button {
+  transition: all 0.2s ease;
+}
+
+.request-button:hover {
+  transform: translateX(2px);
+}
+
+/* Better spacing for results list */
+.results-list li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 0.5rem;
+} 

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Building, Briefcase, HeartPulse, ShoppingBag } from 'lucide-react';
+import { ArrowRight, BookOpen, Building, Briefcase, HeartPulse, ShoppingBag, ChevronRight } from 'lucide-react';
+import '@/styles/Solutions.css';
 
 // Define the industry solutions data
 const industriesData = [
@@ -81,6 +82,84 @@ const industriesData = [
 ];
 
 const SolutionsPage = () => {
+  // Reference to the active tab
+  const activeTabRef = useRef<HTMLButtonElement | null>(null);
+  const tabsListRef = useRef<HTMLDivElement | null>(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  
+  // Function to scroll active tab into view
+  const scrollActiveTabIntoView = () => {
+    if (activeTabRef.current) {
+      activeTabRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start'
+      });
+    }
+  };
+  
+  // Effect to handle scroll behavior and hints
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-state') {
+          const target = mutation.target as HTMLElement;
+          if (target.getAttribute('data-state') === 'active') {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'start'
+            });
+          }
+        }
+      });
+    });
+    
+    const tabs = document.querySelectorAll('[role="tab"]');
+    tabs.forEach(tab => {
+      observer.observe(tab, { attributes: true });
+      if (tab.getAttribute('data-state') === 'active') {
+        activeTabRef.current = tab as HTMLButtonElement;
+        
+        // Initial positioning to ensure we start with the first two tabs visible
+        if (!hasScrolled) {
+          const tabsList = tabsListRef.current;
+          if (tabsList) {
+            tabsList.scrollLeft = 0;
+          }
+          
+          setTimeout(() => {
+            scrollActiveTabIntoView();
+          }, 100);
+        }
+      }
+    });
+    
+    // Hide scroll hint after user scrolls
+    const handleScroll = () => {
+      if (showScrollHint) {
+        setShowScrollHint(false);
+      }
+      setHasScrolled(true);
+    };
+    
+    const tabsList = tabsListRef.current;
+    if (tabsList) {
+      tabsList.addEventListener('scroll', handleScroll);
+      
+      // Ensure we start at scroll position 0 for initial load
+      tabsList.scrollLeft = 0;
+    }
+    
+    return () => {
+      observer.disconnect();
+      if (tabsList) {
+        tabsList.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [showScrollHint, hasScrolled]);
+  
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
@@ -88,7 +167,7 @@ const SolutionsPage = () => {
         <meta name="description" content="Explore our industry specific AI solutions that transform businesses across education, healthcare, finance, retail, and corporate sectors." />
       </Helmet>
       <Navbar />
-      <div className="container mx-auto px-4 md:px-6 pt-24 pb-16">
+      <div className="w-full max-w-full px-4 md:container md:mx-auto md:px-6 pt-24 pb-16">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-aij-blue">Industry Specific AI Solutions</h1>
           <p className="text-lg text-gray-700">
@@ -98,18 +177,26 @@ const SolutionsPage = () => {
         </div>
         
         <Tabs defaultValue="education" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-8">
-            {industriesData.map((industry) => (
-              <TabsTrigger 
-                key={industry.id} 
-                value={industry.id}
-                className="flex items-center justify-center"
-              >
-                {industry.icon}
-                <span>{industry.name}</span>
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <div className={`tabs-list-container ${showScrollHint ? 'has-scroll-hint' : ''}`}>
+            <TabsList className="md:grid md:grid-cols-5 gap-2 mb-8" ref={tabsListRef}>
+              {industriesData.map((industry, index) => (
+                <TabsTrigger 
+                  key={industry.id} 
+                  value={industry.id}
+                  className="tab-trigger flex items-center justify-center"
+                  ref={industry.id === "education" ? activeTabRef : undefined}
+                >
+                  {industry.icon}
+                  <span>{industry.name}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            {industriesData.length > 2 && showScrollHint && (
+              <div className="scroll-hint md:hidden">
+                <ChevronRight size={18} />
+              </div>
+            )}
+          </div>
           
           {industriesData.map((industry) => (
             <TabsContent key={industry.id} value={industry.id} className="space-y-8">
@@ -122,14 +209,14 @@ const SolutionsPage = () => {
                 <div className="space-y-8">
                   <h3 className="text-xl font-semibold">Client Success Stories</h3>
                   {industry.clients.map((client, index) => (
-                    <Card key={index} className="overflow-hidden">
-                      <CardHeader className="bg-gradient-to-r from-blue-50 to-white">
-                        <div className="flex items-center justify-between">
+                    <Card key={index} className="overflow-hidden solution-card">
+                      <CardHeader className="bg-gradient-to-r from-blue-50 to-white card-header">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                           <div>
                             <CardTitle>{client.name}</CardTitle>
                             <CardDescription className="mt-2">{client.description}</CardDescription>
                           </div>
-                          <div className="h-16 w-16 flex-shrink-0">
+                          <div className="h-16 w-16 flex-shrink-0 mt-4 md:mt-0">
                             <img 
                               src={client.logo} 
                               alt={`${client.name} logo`} 
@@ -138,7 +225,7 @@ const SolutionsPage = () => {
                           </div>
                         </div>
                       </CardHeader>
-                      <CardContent className="pt-6">
+                      <CardContent className="pt-6 card-content">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <h4 className="font-medium text-aij-blue mb-2">Challenge</h4>
@@ -152,7 +239,7 @@ const SolutionsPage = () => {
                         
                         <div className="mt-6">
                           <h4 className="font-medium text-aij-blue mb-2">Results</h4>
-                          <ul className="list-disc pl-5 space-y-1">
+                          <ul className="list-disc pl-5 space-y-1 results-list">
                             {client.results.map((result, idx) => (
                               <li key={idx} className="text-gray-700">{result}</li>
                             ))}
@@ -167,7 +254,7 @@ const SolutionsPage = () => {
                         )}
                       </CardContent>
                       <CardFooter className="bg-gray-50 flex justify-end">
-                        <Button variant="outline" className="text-aij-blue">
+                        <Button variant="outline" className="text-aij-blue request-button">
                           Request Similar Solution <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       </CardFooter>
@@ -175,13 +262,13 @@ const SolutionsPage = () => {
                   ))}
                 </div>
               ) : (
-                <div className="bg-gray-50 p-8 rounded-lg text-center">
+                <div className="bg-gray-50 p-8 rounded-lg text-center solution-card">
                   <h3 className="text-xl font-medium text-gray-700 mb-2">Coming Soon</h3>
                   <p className="text-gray-600 mb-4">
                     We're currently working on showcasing our success stories in the {industry.name} sector.
                     Check back soon or contact us to learn more about our solutions in this industry.
                   </p>
-                  <Button className="bg-aij-blue hover:bg-aij-teal text-white">
+                  <Button className="bg-aij-blue hover:bg-aij-teal text-white request-button">
                     Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
