@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -34,7 +35,7 @@ const industriesData = [
         }
       },
       {
-        name: "Tarbiyal Learning Academy",
+        name: "Tarbiyah Learning Academy",
         logo: "/clients/TLA_logo_simple.svg",
         description: "A modern educational institution focused on blending traditional Islamic knowledge with contemporary teaching methods.",
         challenge: "Struggled with managing student data across multiple programs and tracking individual learning journeys.",
@@ -82,6 +83,7 @@ const industriesData = [
 ];
 
 const SolutionsPage = () => {
+  const navigate = useNavigate();
   // Reference to the active tab
   const activeTabRef = useRef<HTMLButtonElement | null>(null);
   const tabsListRef = useRef<HTMLDivElement | null>(null);
@@ -97,6 +99,16 @@ const SolutionsPage = () => {
         inline: 'start'
       });
     }
+  };
+  
+  // Function to navigate to contact page with solution info
+  const handleRequestSolution = (industryId: string, clientName?: string) => {
+    const params = new URLSearchParams();
+    params.append('industry', industryId);
+    if (clientName) {
+      params.append('client', clientName);
+    }
+    navigate(`/contact?${params.toString()}`);
   };
   
   // Effect to handle scroll behavior and hints
@@ -254,7 +266,11 @@ const SolutionsPage = () => {
                         )}
                       </CardContent>
                       <CardFooter className="bg-gray-50 flex justify-end">
-                        <Button variant="outline" className="text-aij-blue request-button">
+                        <Button 
+                          variant="outline" 
+                          className="text-aij-blue request-button"
+                          onClick={() => handleRequestSolution(industry.id, client.name)}
+                        >
                           Request Similar Solution <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       </CardFooter>
@@ -268,7 +284,10 @@ const SolutionsPage = () => {
                     We're currently working on showcasing our success stories in the {industry.name} sector.
                     Check back soon or contact us to learn more about our solutions in this industry.
                   </p>
-                  <Button className="bg-aij-blue hover:bg-aij-teal text-white request-button">
+                  <Button 
+                    className="bg-aij-blue hover:bg-aij-teal text-white request-button"
+                    onClick={() => handleRequestSolution(industry.id)}
+                  >
                     Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>

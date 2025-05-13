@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,6 +10,7 @@ import { toast } from 'sonner';
 import { Helmet } from 'react-helmet-async';
 
 const ContactPage = () => {
+  const location = useLocation();
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -19,10 +21,29 @@ const ContactPage = () => {
     message: '',
   });
 
-  // Scroll to top on page load
+  // Scroll to top on page load and initialize form data from URL params
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    
+    // Check for query parameters
+    const params = new URLSearchParams(location.search);
+    const industry = params.get('industry');
+    const client = params.get('client');
+    
+    // If we have query parameters, prefill the message
+    if (industry) {
+      let initialMessage = `I'm interested in your AI solutions for the ${industry} industry.`;
+      if (client) {
+        initialMessage += ` I was particularly interested in the solution you developed for ${client}.`;
+      }
+      initialMessage += '\n\nPlease let me know how your services could help my organization.';
+      
+      setFormData(prev => ({
+        ...prev,
+        message: initialMessage
+      }));
+    }
+  }, [location.search]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
