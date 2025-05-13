@@ -33,10 +33,23 @@ const ContactPage = () => {
     setIsSubmitting(true);
 
     try {
+      // Send notification email to AiJ Solutions
       await emailjs.send(
         "service_dvs9yhu", 
         "template_bd5xghv", 
         formData,
+        "GuIhwVwvrcIzORK6T" // EmailJS public key
+      );
+      
+      // Send confirmation email to the user
+      await emailjs.send(
+        "service_dvs9yhu",
+        "template_ytehdbb",
+        {
+          firstName: formData.firstName,
+          message: formData.message,
+          email: formData.email,
+        },
         "GuIhwVwvrcIzORK6T" // EmailJS public key
       );
       
